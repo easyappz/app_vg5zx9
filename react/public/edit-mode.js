@@ -128,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
       tagName: tagName,
       data: data,
       elementInfo: {
-        closestParentEasyTag: closestParentEasyTag,
         tag: tagName,
         classes: classes,
         id: element.id,
