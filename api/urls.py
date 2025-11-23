@@ -18,7 +18,6 @@ urlpatterns = [
     path("auth/me/", CurrentUserView.as_view(), name="current-user"),
     path("profile/", ProfileView.as_view(), name="profile"),
     path("messages/", MessagesListView.as_view(), name="messages-list"),
-    path("messages/", MessageCreateView.as_view(), name="messages-create"),
     path("users/online/", OnlineUsersView.as_view(), name="users-online"),
     path("users/heartbeat/", HeartbeatView.as_view(), name="users-heartbeat"),
 ]

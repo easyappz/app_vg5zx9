@@ -121,7 +121,7 @@ class ProfileView(APIView):
 
 
 class MessagesListView(APIView):
-    """Get all chat messages"""
+    """Get all chat messages and create new messages"""
     authentication_classes = [MemberTokenAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -133,12 +133,6 @@ class MessagesListView(APIView):
         messages = Message.objects.all().select_related('author').order_by('created_at')
         serializer = MessageSerializer(messages, many=True)
         return Response(serializer.data)
-
-
-class MessageCreateView(APIView):
-    """Create new message"""
-    authentication_classes = [MemberTokenAuthentication]
-    permission_classes = [IsAuthenticated]
 
     @extend_schema(
         request=MessageSerializer,
