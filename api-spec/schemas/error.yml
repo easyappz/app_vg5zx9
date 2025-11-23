@@ -1,0 +1,12 @@
+type: object
+required:
+  - error
+properties:
+  error:
+    type: string
+    example: "Invalid credentials"
+  details:
+    type: object
+    additionalProperties: true
+    example:
+      username: ["This field is required."]

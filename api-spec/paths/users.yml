@@ -1,0 +1,47 @@
+online:
+  get:
+    summary: Получить список онлайн пользователей
+    tags:
+      - Users
+    security:
+      - BearerAuth: []
+    responses:
+      '200':
+        description: Список онлайн пользователей
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../schemas/member.yml'
+      '401':
+        description: Не авторизован
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'
+
+heartbeat:
+  post:
+    summary: Обновить онлайн статус пользователя
+    tags:
+      - Users
+    security:
+      - BearerAuth: []
+    responses:
+      '200':
+        description: Статус успешно обновлен
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: "online"
+      '401':
+        description: Не авторизован
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'

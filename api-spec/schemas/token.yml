@@ -1,0 +1,25 @@
+type: object
+required:
+  - token
+  - member
+properties:
+  token:
+    type: string
+    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  member:
+    type: object
+    required:
+      - id
+      - username
+      - full_name
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      username:
+        type: string
+        example: "john_doe"
+      full_name:
+        type: string
+        example: "John Doe"

@@ -1,0 +1,61 @@
+messages:
+  get:
+    summary: Получить список сообщений
+    tags:
+      - Messages
+    security:
+      - BearerAuth: []
+    responses:
+      '200':
+        description: Список сообщений
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../schemas/message.yml'
+      '401':
+        description: Не авторизован
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'
+  post:
+    summary: Отправить сообщение
+    tags:
+      - Messages
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - text
+            properties:
+              text:
+                type: string
+                minLength: 1
+                maxLength: 5000
+                example: "Hello, everyone!"
+    responses:
+      '201':
+        description: Сообщение успешно отправлено
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/message.yml'
+      '400':
+        description: Ошибка валидации данных
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'
+      '401':
+        description: Не авторизован
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'

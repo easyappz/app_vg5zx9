@@ -1,0 +1,59 @@
+profile:
+  get:
+    summary: Получить профиль пользователя
+    tags:
+      - Profile
+    security:
+      - BearerAuth: []
+    responses:
+      '200':
+        description: Профиль пользователя
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/member.yml'
+      '401':
+        description: Не авторизован
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'
+  put:
+    summary: Обновить профиль пользователя
+    tags:
+      - Profile
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - full_name
+            properties:
+              full_name:
+                type: string
+                minLength: 1
+                maxLength: 255
+                example: "John Smith"
+    responses:
+      '200':
+        description: Профиль успешно обновлен
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/member.yml'
+      '400':
+        description: Ошибка валидации данных
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'
+      '401':
+        description: Не авторизован
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yml'
