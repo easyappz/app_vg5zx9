@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary';
 import './App.css';
 
-import { Home } from './components/Home';
+import Chat from './components/Chat';
 import Register from './components/Register';
 import Login from './components/Login';
 
@@ -12,14 +12,14 @@ function App() {
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof window.handleRoutes === 'function') {
       /** Нужно передавать список существующих роутов */
-      window.handleRoutes(['/', '/register', '/login', '/chat']);
+      window.handleRoutes(['/', '/register', '/login']);
     }
   }, []);
 
   return (
     <ErrorBoundary>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Chat />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
